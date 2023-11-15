@@ -834,7 +834,9 @@
 #elif MB(TEENSY41)
   #include "teensy4/pins_TEENSY41.h"                // Teensy-4.x                           env:teensy41
 #elif MB(T41U5XBB)
-  #include "teensy4/pins_T41U5XBB.h"                // Teensy-4.x                           env:teensy41
+  #include "teensy4/pins_T41U5XBB.h"            // Teensy-4.x                             env:teensy41
+#elif MB(SMARTPRINTCOREH7X)
+  #include "stm32h7/pins_SMARTPRINTCOREH7X.h"   // STM32H7                                env:STM32H743Vx_spc
 
 //
 // Espressif ESP32

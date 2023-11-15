@@ -58,7 +58,7 @@ extern uint8_t marlin_debug_flags;
 #if HAS_MULTI_SERIAL && defined(SERIAL_CATCHALL)
   #define _SERIAL_LEAF_1 MYSERIAL
 #else
-  #define _SERIAL_LEAF_1 MYSERIAL1
+  #define _SERIAL_LEAF_1 MSERIAL(1)
 #endif
 
 // Hook Meatpack if it's enabled on the first leaf
