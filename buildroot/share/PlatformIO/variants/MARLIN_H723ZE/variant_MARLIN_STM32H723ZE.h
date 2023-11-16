@@ -201,6 +201,9 @@
 #define NUM_DUALPAD_PINS        2
 #define NUM_ANALOG_INPUTS       28
 
+#define HSE_VALUE              25000000U
+#define HSI_VALUE              16000000U
+
 // On-board LED pin number
 #ifndef LED_BUILTIN
   #define LED_BUILTIN           PNUM_NOT_DEFINED

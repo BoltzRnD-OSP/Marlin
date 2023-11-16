@@ -28,8 +28,8 @@
 #define X_DIR_PIN PG4
 #define X_ENABLE_PIN !PG0
 #define X_MIN_PIN !PC0
-#define X_MAX_POS 200
-#define X_HOME_BUMP_MM 2
+//#define X_MAX_POS 200
+//#define X_HOME_BUMP_MM 2
 #define X_CURRENT 800  // Adjust the current as needed
 
 // Motor-2 (Y-axis)
@@ -37,17 +37,17 @@
 #define Y_DIR_PIN PG9
 #define Y_ENABLE_PIN !PG5
 #define Y_MIN_PIN !PC1
-#define Y_MAX_POS 200
-#define Y_HOME_BUMP_MM 2
+//#define Y_MAX_POS 200
+//#define Y_HOME_BUMP_MM 2
 #define Y_CURRENT 800  // Adjust the current as needed
 
 // Motor-3 (Z-axis)
 #define Z_STEP_PIN PG13
 #define Z_DIR_PIN PG14
 #define Z_ENABLE_PIN !PG10
-#define Z_MIN_PIN !PC2
-#define Z_MAX_POS 200
-#define Z_HOME_BUMP_MM 2
+#define Z_MIN_PIN !PC_2
+//#define Z_MAX_POS 200
+//#define Z_HOME_BUMP_MM 2
 #define Z_CURRENT 800  // Adjust the current as needed
 
 // Extruder (E0)
@@ -63,25 +63,30 @@
 #define E1_CURRENT 800  // Adjust the current as needed
 
 // Bed
-#define BED_HEATER_PIN PB2
-#define BED_TEMPERATURE_SENSOR PF11
+#define HEATER_BED_PIN PB2
+#define TEMP_BED_PIN PF11
+
+// Heaters
+#define HEATER_0_PIN PA10
+#define HEATER_1_PIN PB11
+#define TEMP_0_PIN PF11
+#define TEMP_1_PIN PF12
 
 // Fans
-#define FAN_PIN PB0
+#define FAN0_PIN PB0
 #define FAN1_PIN PB3
 #define FAN2_PIN PB1
 #define FAN3_PIN PB4
 
 // MCU
-#define SERIAL_PORT 0
-#define SERIAL_PORT_2 -1
-#define BAUDRATE 115200
+//#define SERIAL_PORT_2 -1
+//#define BAUDRATE 115200
 
 // Printer
-#define X_BED_SIZE 200
-#define Y_BED_SIZE 200
-#define Z_MAX_POS 200
-#define MAX_FEEDRATE {300, 300, 5, 100}  // Adjust as needed
+//#define X_BED_SIZE 200
+//#define Y_BED_SIZE 200
+//#define Z_MAX_POS 200
+//#define MAX_FEEDRATE {300, 300, 5, 100}  // Adjust as needed
 
 // TMC2208 configuration
 #define X_TMC_UART_PIN PG1
@@ -116,29 +121,22 @@
 
 // Configuration.h
 
-// Enable SD Card support using SDMMC
-#define SDSUPPORT
-
-// Select the SD card type
-#define SDCARD_CONNECTION ONBOARD
-#define SDCARD_CS_PIN -1  // Set to -1 for SDMMC
-
 // Enable SDMMC support for the onboard SD card
-#define SDMMC_SUPPORT
+//#define SDMMC_SUPPORT
 
 // Set the pin configuration for SDMMC (for STM32H7xx)
-#define SDMMC_CLK_PIN PC12
-#define SDMMC_CMD_PIN PD2
-#define SDMMC_D0_PIN PC8
-#define SDMMC_D1_PIN PC9
-#define SDMMC_D2_PIN PC10
-#define SDMMC_D3_PIN PC11
+//#define SDMMC_CLK_PIN PC12
+//#define SDMMC_CMD_PIN PD2
+//#define SDMMC_D0_PIN PC8
+//#define SDMMC_D1_PIN PC9
+//#define SDMMC_D2_PIN PC10
+//#define SDMMC_D3_PIN PC11
 
 // Additional settings
-#define SD_ALWAYS_CHECK_AUTOREPORT
-#define SDCARD_SORT_ALPHA
-#define SD_ABORT_ON_ENDSTOP_HIT
-#define FILAMENT_LCD_DISPLAY
+//#define SD_ALWAYS_CHECK_AUTOREPORT
+//#define SDCARD_SORT_ALPHA
+//#define SD_ABORT_ON_ENDSTOP_HIT
+//#define FILAMENT_LCD_DISPLAY
 
 // Uncomment the following line if you want to enable the SD card menu on the LCD
 //#define ULTRA_LCD
