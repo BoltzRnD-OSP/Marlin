@@ -80,7 +80,7 @@
 
 // MCU
 #define SERIAL_PORT_2 -1
-//#define BAUDRATE 115200
+#define BAUDRATE 115200
 
 // Printer
 //#define X_BED_SIZE 200
