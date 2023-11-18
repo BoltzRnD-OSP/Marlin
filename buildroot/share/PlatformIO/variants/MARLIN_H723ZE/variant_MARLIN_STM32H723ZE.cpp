@@ -214,16 +214,17 @@ WEAK void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48 | RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48 | RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSEState = RCC_HSE_OFF;
   RCC_OscInitStruct.HSI48State = RCC_HSI48_ON; // 48Mhz for USB
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = 5;  // 25Mhz / 5 = 5Mhz
-  RCC_OscInitStruct.PLL.PLLN = 110; // 25Mhz / 5 * 110 = 550Mhz
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLM = 4;  // 64Mhz / 4 = 16Mhz
+  RCC_OscInitStruct.PLL.PLLN = 34; // 64Mhz / 4 * 34 = 550Mhz
   RCC_OscInitStruct.PLL.PLLP = 1;  // 550Mhz / 1 = 550Mhz
   RCC_OscInitStruct.PLL.PLLQ = 10; // 550Mhz / 10 = 55Mhz
   RCC_OscInitStruct.PLL.PLLR = 10; // unused
+  RCC_OscInitStruct.PLL.PLLFRACN = 3072; // IDK but MX seems to be doing it.
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_2;
   RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
   RCC_OscInitStruct.PLL.PLLFRACN = 0;
