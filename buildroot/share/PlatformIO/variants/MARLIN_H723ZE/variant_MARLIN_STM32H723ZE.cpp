@@ -225,9 +225,8 @@ WEAK void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLQ = 10; // 550Mhz / 10 = 55Mhz
   RCC_OscInitStruct.PLL.PLLR = 10; // unused
   RCC_OscInitStruct.PLL.PLLFRACN = 3072; // IDK but MX seems to be doing it.
-  RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_2;
+  RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_3;
   RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
-  RCC_OscInitStruct.PLL.PLLFRACN = 0;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
