@@ -69,8 +69,8 @@
 // Heaters
 #define HEATER_0_PIN PA10
 #define HEATER_1_PIN PB11
-#define TEMP_0_PIN PF11
-#define TEMP_1_PIN PF12
+#define TEMP_0_PIN PF10
+#define TEMP_1_PIN PF11
 
 // Fans
 #define FAN0_PIN PB0
