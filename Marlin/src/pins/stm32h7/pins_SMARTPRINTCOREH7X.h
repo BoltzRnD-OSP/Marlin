@@ -79,8 +79,8 @@
 #define FAN3_PIN PB4
 
 // MCU
-#define SERIAL_PORT_2 -1
-#define BAUDRATE 115200
+//#define SERIAL_PORT_2 -1
+//#define BAUDRATE 115200
 
 // Printer
 //#define X_BED_SIZE 200
@@ -121,23 +121,16 @@
 
 // Configuration.h
 
-// Enable SD Card support using SDMMC
-#define SDSUPPORT
-
-// Select the SD card type
-#define SDCARD_CONNECTION ONBOARD
-#define SDCARD_CS_PIN -1  // Set to -1 for SDMMC
-
 // Enable SDMMC support for the onboard SD card
-#define SDMMC_SUPPORT
+//#define SDMMC_SUPPORT
 
 // Set the pin configuration for SDMMC (for STM32H7xx)
-#define SDMMC_CLK_PIN PC12
-#define SDMMC_CMD_PIN PD2
-#define SDMMC_D0_PIN PC8
-#define SDMMC_D1_PIN PC9
-#define SDMMC_D2_PIN PC10
-#define SDMMC_D3_PIN PC11
+//#define SDMMC_CLK_PIN PC12
+//#define SDMMC_CMD_PIN PD2
+//#define SDMMC_D0_PIN PC8
+//#define SDMMC_D1_PIN PC9
+//#define SDMMC_D2_PIN PC10
+//#define SDMMC_D3_PIN PC11
 
 // Additional settings
 //#define SD_ALWAYS_CHECK_AUTOREPORT
