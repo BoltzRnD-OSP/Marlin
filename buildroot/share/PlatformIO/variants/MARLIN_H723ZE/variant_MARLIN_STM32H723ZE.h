@@ -309,3 +309,6 @@
     #define SERIAL_PORT_HARDWARE  Serial
   #endif
 #endif
+
+#define HSE_VALUE              25000000U
+#define HSI_VALUE              16000000U

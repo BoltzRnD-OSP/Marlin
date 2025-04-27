@@ -865,7 +865,8 @@
   #include "stm32f4/pins_MKS_NEPTUNE_X.h"           // STM32F4                              env:mks_neptune_x
 #elif MB(MKS_NEPTUNE_3)
   #include "stm32f4/pins_MKS_NEPTUNE_3.h"           // STM32F4                              env:mks_neptune_3
-
+  #elif MB(SMARTPRINTCOREH7X)
+  #include "stm32h7/pins_SMARTPRINTCOREH7X.h"   // STM32H7                                env:STM32H743Vx_spc
 //
 // Other ARM Cortex-M4
 //
