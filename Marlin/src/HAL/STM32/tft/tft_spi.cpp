@@ -142,6 +142,25 @@ void TFT_SPI::init() {
     }
   #endif
 
+  // New addition for SPI4:
+  #ifdef SPI4_BASE
+    if (SPIx.Instance == SPI4) {
+      __HAL_RCC_SPI4_CLK_ENABLE();  // Enable SPI4 clock
+      #ifdef STM32F1xx
+        __HAL_RCC_DMA2_CLK_ENABLE();
+        DMAtx.Instance = DMA2_Channel4;
+      #elif defined(STM32F4xx)
+        __HAL_RCC_DMA1_CLK_ENABLE();
+        DMAtx.Instance = DMA1_Stream6;
+        DMAtx.Init.Channel = DMA_CHANNEL_1;
+      #elif defined(STM32H7xx)
+        __HAL_RCC_DMA1_CLK_ENABLE();
+        DMAtx.Instance = DMA1_Stream5;
+        DMAtx.Init.Request = DMA_REQUEST_SPI4_TX;
+      #endif
+    }
+  #endif
+  
   DMAtx.Init.Direction = DMA_MEMORY_TO_PERIPH;
   DMAtx.Init.PeriphInc = DMA_PINC_DISABLE;
   DMAtx.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;

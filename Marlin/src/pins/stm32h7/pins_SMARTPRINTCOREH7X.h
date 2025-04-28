@@ -180,20 +180,22 @@
 
 #if HAS_SPI_TFT
 
-  #define TFT_SCK_PIN                PE2
-  #define TFT_MISO_PIN               PE5
-  #define TFT_MOSI_PIN               PE6
+  #define TFT_SCK_PIN                PE2 // PB13 // PE2
+  #define TFT_MISO_PIN               PE5 // PB14 // PE5
+  #define TFT_MOSI_PIN               PE6 // PB15 // PE6
 
   #define BTN_ENC                    PC14
   #define BTN_EN1                    PD14
   #define BTN_EN2                    PD15
 
   #ifndef TFT_WIDTH
-    #define TFT_WIDTH                      480
+    #define TFT_WIDTH                        480
   #endif
   #ifndef TFT_HEIGHT
-    #define TFT_HEIGHT                     320
+    #define TFT_HEIGHT                       320
   #endif
+
+  #if ENABLED(BTT_TFT35_SPI_V1_0)
 
   /**
    *       J18                                       J24
@@ -210,55 +212,85 @@
    *      | 10 | GND                                | 10 | GND
    *      ------                                    ------
    */
-  #define TFT_CS_PIN               PE3  // SPI1_CS
-  #define TFT_DC_PIN               PE10  // SPI1_RS
-  #define TFT_A0_PIN                TFT_DC_PIN
 
-  #define TFT_RESET_PIN            PE14
+    #define TFT_CS_PIN               PE11
+    #define TFT_DC_PIN               PE10
+    #define TFT_A0_PIN                TFT_DC_PIN
 
-  #define LCD_BACKLIGHT_PIN        PE15
-  #define TFT_BACKLIGHT_PIN  LCD_BACKLIGHT_PIN
+    #define TOUCH_CS_PIN             PE13
+    #define TOUCH_SCK_PIN            PE2 // PB13 // PE2
+    #define TOUCH_MISO_PIN           PE5 // PB14 // PE5
+    #define TOUCH_MOSI_PIN           PE6 // PB15 // PE6
+    #define TOUCH_INT_PIN            EXP1_07_PIN
 
-  #define TOUCH_BUTTONS_HW_SPI
-  #define TOUCH_BUTTONS_HW_SPI_DEVICE 4
+    #ifndef TOUCH_CALIBRATION_X
+      #define TOUCH_CALIBRATION_X          17540
+    #endif
+    #ifndef TOUCH_CALIBRATION_Y
+      #define TOUCH_CALIBRATION_Y         -11388
+    #endif
+    #ifndef TOUCH_OFFSET_X
+      #define TOUCH_OFFSET_X                 -21
+    #endif
+    #ifndef TOUCH_OFFSET_Y
+      #define TOUCH_OFFSET_Y                 337
+    #endif
+    #ifndef TOUCH_ORIENTATION
+      #define TOUCH_ORIENTATION TOUCH_LANDSCAPE
+    #endif
 
-  #define TOUCH_CS_PIN             PE13  // SPI1_NSS
-  #define TOUCH_SCK_PIN            PE2  // SPI1_SCK
-  #define TOUCH_MISO_PIN           PE5  // SPI1_MISO
-  #define TOUCH_MOSI_PIN           PE6  // SPI1_MOSI
+  #elif ENABLED(MKS_TS35_V2_0)
 
-  #define LCD_READ_ID                     0xD3
-  #define LCD_USE_DMA_SPI
+    /**                      ------                                   ------
+     *               BEEPER | 1  2 | BTN_ENC               SPI1_MISO | 1  2 | SPI1_SCK
+     *     TFT_BKL / LCD_EN | 3  4 | TFT_RESET / LCD_RS      BTN_EN1 | 3  4 | SPI1_CS
+     *    TOUCH_CS / LCD_D4 | 5  6   TOUCH_INT / LCD_D5      BTN_EN2 | 5  6   SPI1_MOSI
+     *     SPI1_CS / LCD_D6 | 7  8 | SPI1_RS / LCD_D7       SPI1_RS  | 7  8 | RESET
+     *                  GND | 9 10 | VCC                         GND | 9 10 | VCC
+     *                       ------                                   ------
+     *                        EXP1                                     EXP2
+     */
+    #define TFT_CS_PIN               PE11  // SPI1_CS
+    #define TFT_DC_PIN               PE10  // SPI1_RS
+    #define TFT_A0_PIN                TFT_DC_PIN
 
-  #define TFT_BUFFER_WORDS               14400
+    #define TFT_RESET_PIN            PE14
 
-  #ifndef TOUCH_CALIBRATION_X
-    #define TOUCH_CALIBRATION_X         -17253
+    #define LCD_BACKLIGHT_PIN        PE15
+    #define TFT_BACKLIGHT_PIN  LCD_BACKLIGHT_PIN
+
+    #define TOUCH_BUTTONS_HW_SPI
+    #define TOUCH_BUTTONS_HW_SPI_DEVICE        4
+
+    #define TOUCH_CS_PIN             PE13  // SPI1_NSS
+    #define TOUCH_SCK_PIN            PE2 // PB13 // PE2  // SPI1_SCK
+    #define TOUCH_MISO_PIN           PE5 // PB14 // PE5  // SPI1_MISO
+    #define TOUCH_MOSI_PIN           PE6 // PB15 // PE6  // SPI1_MOSI
+
+    #define LCD_READ_ID                     0xD3
+    #define LCD_USE_DMA_SPI
+
+    #define TFT_BUFFER_WORDS               14400
+
+    #ifndef TOUCH_CALIBRATION_X
+      #define TOUCH_CALIBRATION_X         -17253
+    #endif
+    #ifndef TOUCH_CALIBRATION_Y
+      #define TOUCH_CALIBRATION_Y          11579
+    #endif
+    #ifndef TOUCH_OFFSET_X
+      #define TOUCH_OFFSET_X                 514
+    #endif
+    #ifndef TOUCH_OFFSET_Y
+      #define TOUCH_OFFSET_Y                 -24
+    #endif
+    #ifndef TOUCH_ORIENTATION
+      #define TOUCH_ORIENTATION TOUCH_LANDSCAPE
+    #endif
+
   #endif
-  #ifndef TOUCH_CALIBRATION_Y
-    #define TOUCH_CALIBRATION_Y          11579
-  #endif
-  #ifndef TOUCH_OFFSET_X
-    #define TOUCH_OFFSET_X                 514
-  #endif
-  #ifndef TOUCH_OFFSET_Y
-    #define TOUCH_OFFSET_Y                 -24
-  #endif
-  #ifndef TOUCH_ORIENTATION
-    #define TOUCH_ORIENTATION TOUCH_LANDSCAPE
-  #endif
 
-#elif ENABLED(CR10_STOCKDISPLAY)
-
-      #define LCD_PINS_RS            PE14
-      #define LCD_PINS_EN            PE15
-      #define LCD_PINS_D4            PE13
-      #define BTN_EN1                PD14
-      #define BTN_EN2                PD15
-      #define BEEPER_PIN             PC15
-      #define BTN_ENC                PC14
-
-#endif
+#endif // HAS_SPI_TFT
 
 // Enable SDMMC support for the onboard SD card
 //#define SDMMC_SUPPORT
@@ -290,3 +322,11 @@
 // ...
 
 // Other configurations in Configuration.h
+
+// Alter timing for graphical display
+#if IS_U8GLIB_ST7920
+#define BOARD_ST7920_DELAY_1                96
+#define BOARD_ST7920_DELAY_2                48
+#define BOARD_ST7920_DELAY_3               715
+#endif
+

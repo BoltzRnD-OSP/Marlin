@@ -303,8 +303,8 @@ WEAK void SystemClock_Config(void)
   // SPI123 from PLL2 pclk
   PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL2;
   // SPI45 from PLL2 qclk
-  PeriphClkInitStruct.Spi45ClockSelection = 0;
-  //PeriphClkInitStruct.Spi45ClockSelection = RCC_SPI45CLKSOURCE_PLL2;
+  //PeriphClkInitStruct.Spi45ClockSelection = 0;
+  PeriphClkInitStruct.Spi45ClockSelection = RCC_SPI45CLKSOURCE_PLL2;
   // SPI6 from PLL2 qclk
   PeriphClkInitStruct.Spi6ClockSelection = 0;
   //PeriphClkInitStruct.Spi6ClockSelection = RCC_SPI6CLKSOURCE_PLL2;
